@@ -1,8 +1,14 @@
 {
   "mydata": [
     {
-      "description": "Learn NextJs",
-      "id": 2
+      "description": "Learn New",
+      "bool": true,
+      "id": 3
+    },
+    {
+      "description": "Learn NextJS",
+      "bool": true,
+      "id": 4
     }
   ]
 }

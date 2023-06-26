@@ -42,7 +42,8 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({
-        description: des
+        description: des,
+        bool: false
       })
     })
     .then((response)=>{
@@ -99,7 +100,28 @@ export default function Home() {
     setVisible(false);
     setIds("");
   }
-  console.log(ids);
+
+  const handleCheck = async(id) =>{
+    await fetch(`http://localhost:8080/mydata/${id}`,{
+      method:"GET"
+   }).then((res)=>res.json())
+   .then((data)=>{
+      fetch(`http://localhost:8080/mydata/${id}`,{
+        method:"PUT",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({
+          description: data.description,
+          bool: !data.bool
+        })
+      }).then((res)=>{
+        if(res.ok){
+          getData();
+        }
+      })
+   })
+  }
   return (
     <div className="parent" >
       <Card className="card"css={{ mw: "700px" }} >
@@ -120,7 +142,7 @@ export default function Home() {
                   {
                     whole.map((item)=>{
                       return(
-                        <Cards id={item.id} className="singlecard" description={item.description} onclick={()=>handleDelete(item.id)} onUpdate={()=>handleupdate(item.id)}/>
+                        <Cards id={item.id} className="singlecard" description={item.description} onclick={()=>handleDelete(item.id)} onUpdate={()=>handleupdate(item.id)} onCheck={()=>handleCheck(item.id)} buttonValue={item.bool}/>
                       )
                     })
                   }
