@@ -21,6 +21,8 @@ export default function Home() {
     }
   }, []);
 
+  
+
   const onChange = (e) => {
     setDes(e.target.value);
   };
@@ -34,11 +36,14 @@ export default function Home() {
   };
 
   const submitData = () => {
-    const newTodo = {
-      id: Date.now(),
-      description: des,
-      bool: false,
-    };
+    if(des===""){
+      alert("Please Enter Task");
+    }else{
+      const newTodo = {
+        id: Date.now(),
+        description: des,
+        bool: false,
+    }
 
     const updatedTodos = [...whole, newTodo];
     setWhole(updatedTodos);
@@ -46,6 +51,7 @@ export default function Home() {
 
     setDes("");
   };
+}
 
   const handleDelete = (id) => {
     const updatedTodos = whole.filter((todo) => todo.id !== id);
@@ -123,7 +129,7 @@ export default function Home() {
           <Button
             shadow
             color="success"
-            onClick={submitData}
+            onPress={submitData}
             auto
             css={{ mw: "100px", marginLeft: "10px" }}
           >
