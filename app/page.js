@@ -99,6 +99,10 @@ export default function Home() {
     setWhole(updatedTodos);
     saveTodosToLocalStorage(updatedTodos);
   };
+  const removed = () =>{
+    setVisible(false);
+    setIds("");
+  }
 
   return (
     <div className="parent">
@@ -122,7 +126,7 @@ export default function Home() {
             width="500px"
             value={des}
             onChange={onChange}
-            Placeholder="Description"
+            labelPlaceholder="Enter Task"
             name="desc"
             css={{ mw: "700px" }}
           />
