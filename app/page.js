@@ -48,7 +48,6 @@ export default function Home() {
     })
     .then((response)=>{
       if(response.ok){
-        alert("Data Inserted Successfully");
         getData();
         setDes("");
       }
@@ -60,7 +59,6 @@ export default function Home() {
         method:"DELETE"
     }).then((res)=>{
       if(res.ok){
-        alert("Data Deleted Successfully");
         getData();
       }
     })
@@ -85,11 +83,11 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({
-        description: temp
+        description: temp,
+        bool: false
       })
     }).then((res)=>{
       if(res.ok){
-        alert("Data Updated Successfully");
         getData();
         setVisible(false);
       }
