@@ -126,7 +126,7 @@ export default function Home() {
             width="500px"
             value={des}
             onChange={onChange}
-            labelPlaceholder="Enter Task"
+            placeholder="Enter Task"
             name="desc"
             css={{ mw: "700px" }}
           />
