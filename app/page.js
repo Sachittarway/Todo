@@ -35,6 +35,7 @@ export default function Home() {
 
   const submitData = () => {
     const newTodo = {
+      id: Date.now(),
       description: des,
       bool: false,
     };
