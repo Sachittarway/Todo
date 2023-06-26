@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   const getData = async() =>{
-    await fetch ("http://localhost:8080/mydata",{
+    await fetch ("https://my-json-server.typicode.com/sachittarway/Todo/mydata",{
         method:"GET"
     })
     .then((res)=>res.json())
@@ -36,7 +36,7 @@ export default function Home() {
   }
 
   const submitData = () =>{
-    fetch("http://localhost:8080/mydata",{
+    fetch("https://my-json-server.typicode.com/sachittarway/Todo/mydata",{
       method:"POST",
       headers: {
         'Content-Type': 'application/json',
@@ -48,6 +48,7 @@ export default function Home() {
     })
     .then((response)=>{
       if(response.ok){
+
         getData();
         setDes("");
       }
@@ -55,7 +56,7 @@ export default function Home() {
   }
 
   const handleDelete = async(id) =>{
-    await fetch(`http://localhost:8080/mydata/${id}`,{
+    await fetch(`https://my-json-server.typicode.com/sachittarway/Todo/mydata/${id}`,{
         method:"DELETE"
     }).then((res)=>{
       if(res.ok){
@@ -68,7 +69,7 @@ export default function Home() {
     console.log(id);
     setVisible(true);
     setIds(id);
-    await fetch(`http://localhost:8080/mydata/${id}`,{
+    await fetch(`https://my-json-server.typicode.com/sachittarway/Todo/mydata/${id}`,{
       method:"GET"
    }).then((res)=>res.json())
    .then((data)=>{
@@ -77,7 +78,7 @@ export default function Home() {
   }
 
   const updates = async() =>{
-    await fetch(`http://localhost:8080/mydata/${ids}`,{
+    await fetch(`https://my-json-server.typicode.com/sachittarway/Todo/mydata/${ids}`,{
       method:"PUT",
       headers: {
         'Content-Type': 'application/json',
